@@ -131,19 +131,26 @@ export function Navbar() {
         <div className="lg:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-white/10 p-6 flex flex-col gap-2 max-h-[calc(100vh-80px)] overflow-y-auto animate-in slide-in-from-top-5">
           {navItems.map((item) => (
             <div key={item.label}>
-              <button
-                onClick={() => setOpenSubmenu(openSubmenu === item.label ? null : item.label)}
-                className="w-full text-left text-lg font-medium text-gray-300 hover:text-white py-3 border-b border-white/5 flex justify-between items-center"
-              >
-                {item.label}
-                {item.submenu.length > 0 && (
+              {item.submenu.length > 0 ? (
+                <button
+                  onClick={() => setOpenSubmenu(openSubmenu === item.label ? null : item.label)}
+                  className="w-full text-left text-lg font-medium text-gray-300 hover:text-white py-3 border-b border-white/5 flex justify-between items-center"
+                >
+                  {item.label}
                   <ChevronDown
                     size={18}
-                    className={`transition-transform ${openSubmenu === item.label ? "rotate-180" : ""
-                      }`}
+                    className={`transition-transform ${openSubmenu === item.label ? "rotate-180" : ""}`}
                   />
-                )}
-              </button>
+                </button>
+              ) : (
+                <Link
+                  href={item.href}
+                  className="block w-full text-left text-lg font-medium text-gray-300 hover:text-white py-3 border-b border-white/5"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              )}
 
               {/* Mobile Submenu */}
               {item.submenu.length > 0 && openSubmenu === item.label && (
