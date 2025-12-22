@@ -6,37 +6,37 @@ import { useState, useEffect } from "react";
 const navItems = [
   {
     label: "Products",
-    href: "#products",
+    href: "/products",
     submenu: [
-      { label: "Payment Gateway", href: "#payment-gateway" },
-      { label: "Payment Links", href: "#payment-links" },
-      { label: "Wire", href: "#wire" },
-      { label: "Smart Collect", href: "#smart-collect" },
-      { label: "FeesBuzz", href: "#feesbuzz" },
+      { label: "Payment Gateway", href: "/products/gateway" },
+      { label: "Payment Links", href: "/products/links" },
+      { label: "Wire", href: "/products/wire" },
+      { label: "Smart Collect", href: "/products/collect" },
+      { label: "FeesBuzz", href: "/products/feesbuzz" },
     ]
   },
   {
     label: "Pricing",
-    href: "#pricing",
+    href: "/pricing",
     submenu: []
   },
   {
     label: "Developers",
-    href: "#developers",
+    href: "/developers",
     submenu: [
-      { label: "API Docs", href: "#api-docs" },
-      { label: "SDK", href: "#sdk" },
-      { label: "Plugins", href: "#plugins" },
+      { label: "API Docs", href: "/developers/docs" },
+      { label: "SDK", href: "/developers/sdk" },
+      { label: "Plugins", href: "/developers/plugins" },
     ]
   },
   {
     label: "Company",
-    href: "#company",
+    href: "/about",
     submenu: [
-      { label: "About Us", href: "#about" },
-      { label: "Blog", href: "#blog" },
-      { label: "Careers", href: "#careers" },
-      { label: "Contact", href: "#contact" },
+      { label: "About Us", href: "/about" },
+      { label: "Blog", href: "/blog" },
+      { label: "Careers", href: "/careers" },
+      { label: "Contact", href: "/contact" },
     ]
   },
 ];
@@ -74,7 +74,7 @@ export function Navbar() {
         <div className="hidden lg:flex items-center gap-8">
           {navItems.map((item) => (
             <div key={item.label} className="relative group">
-              <a
+              <Link
                 href={item.href}
                 className="text-sm font-medium text-gray-300 hover:text-white transition-colors relative flex items-center gap-1 py-2"
               >
@@ -83,19 +83,19 @@ export function Navbar() {
                   <ChevronDown size={16} className="group-hover:rotate-180 transition-transform" />
                 )}
                 <span className="absolute -bottom-2 left-0 w-0 h-0.5 bg-purple-500 transition-all group-hover:w-full" />
-              </a>
+              </Link>
 
               {/* Submenu */}
               {item.submenu.length > 0 && (
                 <div className="absolute top-full left-0 mt-0 w-48 bg-background/95 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-2">
                   {item.submenu.map((subitem) => (
-                    <a
+                    <Link
                       key={subitem.label}
                       href={subitem.href}
                       className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
                     >
                       {subitem.label}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               )}

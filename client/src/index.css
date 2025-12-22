@@ -110,4 +110,12 @@
   .card-gradient {
     background: linear-gradient(145deg, hsl(var(--card)), rgba(255,255,255,0.03));
   }
+  .gpu-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  .performance-hints {
+    will-change: transform, opacity;
+  }
 }

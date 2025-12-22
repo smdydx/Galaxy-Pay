@@ -1,24 +1,27 @@
 import { Facebook, Twitter, Instagram, Linkedin, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Link } from "wouter";
 
 export function Footer() {
   return (
     <footer className="bg-background/50 border-t border-white/5 backdrop-blur-lg pt-20 pb-10 relative overflow-hidden">
-        {/* Glow effect for footer */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-purple-900/20 blur-[100px] pointer-events-none" />
+      {/* Glow effect for footer */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-purple-900/20 blur-[100px] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-white font-bold">
+            <Link href="/" className="flex items-center gap-2 mb-6 group">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-purple-500/20 group-hover:shadow-purple-500/40 transition-all">
                 B
               </div>
-              <span className="text-xl font-display font-bold text-white">BIDUAPAY.</span>
-            </div>
+              <span className="text-2xl font-display font-bold text-white tracking-tight">
+                BIDUAPAY<span className="text-purple-400">.</span>
+              </span>
+            </Link>
             <p className="text-gray-400 mb-6 leading-relaxed max-w-sm">
-              Helping Indian businesses grow with full-stack payment solutions. 
+              Helping Indian businesses grow with full-stack payment solutions.
               Accept payments, manage subscriptions, and automate payouts with our robust platform.
             </p>
             <div className="flex gap-4">
@@ -33,9 +36,16 @@ export function Footer() {
           <div>
             <h4 className="text-white font-bold mb-6">Products</h4>
             <ul className="space-y-3">
-              {["Payment Gateway", "Payment Links", "Wire", "Smart Collect", "FeesBuzz", "InstaCollect"].map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors text-sm">{item}</a>
+              {[
+                { label: "Payment Gateway", href: "/products/gateway" },
+                { label: "Payment Links", href: "/products/links" },
+                { label: "Wire", href: "/products/wire" },
+                { label: "Smart Collect", href: "/products/collect" },
+                { label: "FeesBuzz", href: "/products/feesbuzz" },
+                { label: "InstaCollect", href: "/products/insta" }
+              ].map((item) => (
+                <li key={item.label}>
+                  <Link href={item.href} className="text-gray-400 hover:text-purple-400 transition-colors text-sm">{item.label}</Link>
                 </li>
               ))}
             </ul>
@@ -44,9 +54,16 @@ export function Footer() {
           <div>
             <h4 className="text-white font-bold mb-6">Company</h4>
             <ul className="space-y-3">
-              {["About Us", "Careers", "Contact", "Partners", "Privacy Policy", "Terms of Use"].map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors text-sm">{item}</a>
+              {[
+                { label: "About Us", href: "/about" },
+                { label: "Careers", href: "/careers" },
+                { label: "Contact", href: "/contact" },
+                { label: "Partners", href: "/partners" },
+                { label: "Privacy Policy", href: "/privacy" },
+                { label: "Terms of Use", href: "/terms" }
+              ].map((item) => (
+                <li key={item.label}>
+                  <Link href={item.href} className="text-gray-400 hover:text-purple-400 transition-colors text-sm">{item.label}</Link>
                 </li>
               ))}
             </ul>

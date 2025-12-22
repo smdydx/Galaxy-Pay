@@ -5,13 +5,13 @@ export function GalaxyBackground() {
   return (
     <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-900/30 via-background to-background" />
-      
+
       {/* Black Hole Effect */}
       <BlackHole />
-      
+
       {/* Stars */}
       <Stars />
-      
+
       {/* Nebula Clouds */}
       <Nebula />
     </div>
@@ -23,28 +23,28 @@ function BlackHole() {
     <div className="absolute inset-0">
       {/* Central black hole core */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full bg-black shadow-[0_0_80px_rgba(0,0,0,0.8),inset_0_0_40px_rgba(139,0,139,0.3)]" />
-      
+
       {/* Black hole glow rings */}
       <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full border-2 border-transparent opacity-40"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full border-2 border-transparent opacity-40 gpu-accelerated performance-hints"
         style={{
           borderImage: "linear-gradient(45deg, #a855f7 0%, #7c3aed 50%, transparent 100%) 1",
         }}
         animate={{ rotate: 360 }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
       />
-      
+
       <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full border border-transparent opacity-30"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full border border-transparent opacity-30 gpu-accelerated performance-hints"
         style={{
           borderImage: "linear-gradient(45deg, transparent 0%, #3b82f6 50%, #1e40af 100%) 1",
         }}
         animate={{ rotate: -360 }}
         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
       />
-      
+
       <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full border border-transparent opacity-20"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full border border-transparent opacity-20 gpu-accelerated performance-hints"
         style={{
           borderImage: "linear-gradient(45deg, #06b6d4 0%, transparent 50%, #0891b2 100%) 1",
         }}
@@ -59,9 +59,9 @@ function BlackHole() {
 }
 
 function AccretionDisk() {
-  const particles = Array.from({ length: 20 }).map((_, i) => ({
+  const particles = Array.from({ length: 12 }).map((_, i) => ({
     id: i,
-    angle: (i / 20) * Math.PI * 2,
+    angle: (i / 12) * Math.PI * 2,
     distance: 120 + Math.random() * 40,
     size: Math.random() * 2 + 1,
     duration: Math.random() * 8 + 12,
@@ -72,7 +72,7 @@ function AccretionDisk() {
       {particles.map((particle) => (
         <motion.div
           key={particle.id}
-          className="absolute rounded-full bg-gradient-to-r from-purple-500 to-pink-500"
+          className="absolute rounded-full bg-gradient-to-r from-purple-500 to-pink-500 gpu-accelerated performance-hints"
           style={{
             width: particle.size,
             height: particle.size,
@@ -100,7 +100,7 @@ function AccretionDisk() {
 }
 
 function Stars() {
-  const stars = Array.from({ length: 60 }).map((_, i) => ({
+  const stars = Array.from({ length: 30 }).map((_, i) => ({
     id: i,
     top: `${Math.random() * 100}%`,
     left: `${Math.random() * 100}%`,
@@ -114,7 +114,7 @@ function Stars() {
       {stars.map((star) => (
         <motion.div
           key={star.id}
-          className="absolute rounded-full bg-white"
+          className="absolute rounded-full bg-white gpu-accelerated performance-hints"
           style={{
             top: star.top,
             left: star.left,
@@ -142,7 +142,7 @@ function Nebula() {
     <div className="absolute inset-0 opacity-40">
       {/* Purple nebula */}
       <motion.div
-        className="absolute -top-1/4 left-0 w-96 h-96 bg-purple-600 rounded-full blur-[120px]"
+        className="absolute -top-1/4 left-0 w-96 h-96 bg-purple-600 rounded-full blur-[80px] gpu-accelerated performance-hints"
         animate={{
           x: [-50, 50, -50],
           y: [-30, 30, -30],
@@ -153,10 +153,10 @@ function Nebula() {
           ease: "easeInOut",
         }}
       />
-      
+
       {/* Blue nebula */}
       <motion.div
-        className="absolute top-1/3 right-0 w-80 h-80 bg-blue-600 rounded-full blur-[100px]"
+        className="absolute top-1/3 right-0 w-80 h-80 bg-blue-600 rounded-full blur-[60px] gpu-accelerated performance-hints"
         animate={{
           x: [50, -50, 50],
           y: [30, -30, 30],
@@ -168,10 +168,10 @@ function Nebula() {
           delay: 2,
         }}
       />
-      
+
       {/* Cyan nebula near black hole */}
       <motion.div
-        className="absolute bottom-1/4 left-1/3 w-64 h-64 bg-cyan-500/30 rounded-full blur-[80px]"
+        className="absolute bottom-1/4 left-1/3 w-64 h-64 bg-cyan-500/30 rounded-full blur-[40px] gpu-accelerated performance-hints"
         animate={{
           scale: [1, 1.2, 1],
           opacity: [0.3, 0.6, 0.3],

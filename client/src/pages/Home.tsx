@@ -49,12 +49,12 @@ const paymentMethods = [
 ];
 
 const brands = [
-  { name: "Housing", logo: "https://upload.wikimedia.org/wikipedia/en/2/22/Housing.com_logo.svg" },
-  { name: "BigBasket", logo: "https://upload.wikimedia.org/wikipedia/commons/2/22/Bigbasket_logo.png" },
-  { name: "DLF", logo: "https://upload.wikimedia.org/wikipedia/commons/d/dd/DLF_logo.svg" },
-  { name: "Brigade", logo: "https://www.brigadegroup.com/wp-content/uploads/2016/04/Brigade-Group-Logo.png" },
-  { name: "IRCTC", logo: "https://upload.wikimedia.org/wikipedia/en/4/45/IRCTC_Logo.svg" },
-  { name: "Tata Play", logo: "https://upload.wikimedia.org/wikipedia/en/f/f2/Tata_Play_logo.svg" },
+  { name: "Housing", logo: "/brands/housing.png" },
+  { name: "BigBasket", logo: "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://bigbasket.com&size=256" }, // Google-served high-res icon
+  { name: "DLF", logo: "/brands/dlf.png" },
+  { name: "Brigade", logo: "/brands/brigade.png" },
+  { name: "IRCTC", logo: "/brands/irctc.png" },
+  { name: "Tata Play", logo: "/brands/tataplay.png" },
 ];
 
 export default function Home() {
@@ -69,9 +69,9 @@ export default function Home() {
       <section className="relative pt-32 pb-32 lg:pt-48 lg:pb-40 px-6">
         <div className="container mx-auto">
           <div className="flex flex-col lg:flex-row items-center gap-16">
-            <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="lg:w-1/2 space-y-8">
+            <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="lg:w-1/2 space-y-8 gpu-accelerated performance-hints">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-sm font-medium">
-                <span className="relative flex h-2 w-2"><span className="animate-ping absolute h-full w-full rounded-full bg-purple-400 opacity-75"></span><span className="relative h-2 w-2 bg-purple-500 rounded-full"></span></span>
+                <span className="relative flex h-2 w-2"><span className="animate-ping absolute h-full w-full rounded-full bg-purple-400 opacity-75 gpu-accelerated"></span><span className="relative h-2 w-2 bg-purple-500 rounded-full"></span></span>
                 Next Gen Payment Solutions
               </div>
 
@@ -111,7 +111,7 @@ export default function Home() {
                     <CarouselItem>
                       <div className="relative aspect-square w-full max-w-[500px] mx-auto">
                         <motion.div
-                          className="w-[85%] h-[50%] absolute top-[15%] left-[0%] bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl p-6 flex flex-col justify-between overflow-hidden group"
+                          className="w-[85%] h-[45%] sm:h-[50%] absolute top-[10%] left-[0%] bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl p-4 sm:p-6 flex flex-col justify-between overflow-hidden group gpu-accelerated performance-hints"
                           animate={{ y: [0, -15, 0] }}
                           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                         >
@@ -139,7 +139,7 @@ export default function Home() {
                         </motion.div>
 
                         <motion.div
-                          className="w-[65%] h-[40%] absolute bottom-[10%] right-[5%] bg-[#0f172a]/90 backdrop-blur-xl border border-blue-500/30 rounded-2xl shadow-2xl p-6 flex flex-col gap-4 overflow-hidden group"
+                          className="w-[75%] sm:w-[65%] h-[35%] sm:h-[40%] absolute bottom-[15%] right-[0%] bg-[#0f172a]/90 backdrop-blur-xl border border-blue-500/30 rounded-2xl shadow-2xl p-4 sm:p-6 flex flex-col gap-3 sm:gap-4 overflow-hidden group gpu-accelerated performance-hints"
                           animate={{ y: [0, 15, 0] }}
                           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                         >
@@ -240,31 +240,32 @@ export default function Home() {
           <div className="flex relative items-center">
             {/* Infinite Marquee Container */}
             <motion.div
-              className="flex gap-20 items-center whitespace-nowrap"
+              className="flex gap-20 items-center whitespace-nowrap gpu-accelerated performance-hints"
               animate={{ x: ["0%", "-50%"] }}
               transition={{
-                duration: 30,
+                duration: 40,
                 repeat: Infinity,
                 ease: "linear"
               }}
             >
               {[...brands, ...brands, ...brands, ...brands].map((brand, idx) => (
-                <div key={idx} className="flex flex-col items-center gap-4 transition-all duration-300 hover:scale-110">
-                  <div className="h-20 w-40 flex items-center justify-center grayscale hover:grayscale-0 transition-all opacity-40 hover:opacity-100">
+                <div key={idx} className="flex flex-col items-center gap-4 transition-all duration-500 hover:scale-110 group/brand">
+                  <div className="h-20 w-40 flex items-center justify-center p-4 rounded-2xl bg-white/10 border border-white/10 group-hover/brand:border-purple-500/30 group-hover/brand:bg-white/15 transition-all shadow-2xl opacity-100">
                     <img
                       src={brand.logo}
                       alt={brand.name}
-                      className="max-h-full max-w-full object-contain filter drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]"
+                      className="max-h-full max-w-full object-contain filter drop-shadow-[0_0_10px_rgba(255,255,255,0.1)]"
+                      loading="lazy"
                     />
                   </div>
-                  <span className="text-[10px] font-bold text-gray-500 tracking-[0.2em] uppercase">{brand.name}</span>
+                  <span className="text-[10px] font-bold text-gray-400 tracking-[0.2em] uppercase opacity-40 group-hover/brand:opacity-100 transition-opacity whitespace-nowrap">{brand.name}</span>
                 </div>
               ))}
             </motion.div>
 
             {/* Fades for smooth entry/exit */}
-            <div className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-[#0d0d0d] to-transparent z-10" />
-            <div className="absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-[#0d0d0d] to-transparent z-10" />
+            <div className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-[#0d0d0d] to-transparent z-10 hidden sm:block" />
+            <div className="absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-[#0d0d0d] to-transparent z-10 hidden sm:block" />
           </div>
         </div>
       </section>
