@@ -58,24 +58,25 @@ const brands = [
   { name: "Tata Play", logo: "/brands/tataplay.png" },
 ];
 
+const sliderImages = [
+  "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?q=80&w=2574&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=2832&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1965&auto=format&fit=crop"
+];
+
 const Slider = () => {
-  const images = [
-    "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?q=80&w=2574&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=2832&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1965&auto=format&fit=crop"
-  ];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % images.length);
+      setCurrentIndex((prev) => (prev + 1) % sliderImages.length);
     }, 4000);
     return () => clearInterval(timer);
   }, []);
 
   return (
-    <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 rounded-2xl aspect-video flex items-center justify-center overflow-hidden relative">
-      <AnimatePresence mode="wait">
+    <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 rounded-2xl w-[calc(100%+3rem)] -ml-6 lg:w-full lg:ml-0 h-[350px] lg:h-auto lg:aspect-video flex items-center justify-center overflow-hidden relative">
+      <AnimatePresence>
         <motion.div
           key={currentIndex}
           initial={{ opacity: 0 }}
@@ -84,17 +85,17 @@ const Slider = () => {
           transition={{ duration: 1 }}
           className="absolute inset-0"
         >
-          <img src={images[currentIndex]} alt="" className="w-full h-full object-cover" />
+          <img src={sliderImages[currentIndex]} alt="" className="w-full h-full object-cover" />
         </motion.div>
       </AnimatePresence>
 
-      <div className="text-center relative z-10">
-        <Smartphone className="w-16 h-16 text-purple-400 mx-auto mb-4" />
-        <p className="text-white font-medium">iFrame Checkout Preview</p>
+      <div className="text-center relative z-10 pb-8">
+        <Smartphone className="w-12 h-12 lg:w-16 lg:h-16 text-purple-400 mx-auto mb-4" />
+        <p className="text-white font-medium text-sm lg:text-base">iFrame Checkout Preview</p>
       </div>
 
       <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-20">
-        {images.map((_, i) => (
+        {sliderImages.map((_, i) => (
           <button
             key={i}
             onClick={() => setCurrentIndex(i)}
