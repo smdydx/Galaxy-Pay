@@ -13,12 +13,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-2 mb-6 group">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-purple-500/20 group-hover:shadow-purple-500/40 transition-all">
-                B
-              </div>
-              <span className="text-2xl font-display font-bold text-white tracking-tight">
-                BIDUAPAY<span className="text-purple-400">.</span>
-              </span>
+              <img src="/logo.png" alt="BiduaPay Logo" className="h-40 w-auto" />
             </Link>
             <p className="text-gray-400 mb-6 leading-relaxed max-w-sm">
               Helping Indian businesses grow with full-stack payment solutions.
@@ -94,3 +89,4 @@ export function Footer() {
     </footer>
   );
 }
+

@@ -62,12 +62,7 @@ export function Navbar() {
       <div className="container mx-auto px-6 h-full flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-purple-500/20 group-hover:shadow-purple-500/40 transition-all">
-            B
-          </div>
-          <span className="text-2xl font-display font-bold text-white tracking-tight">
-            BIDUAPAY<span className="text-purple-400">.</span>
-          </span>
+          <img src="/logo.png" alt="BiduaPay Logo" className="h-50 w-auto" />
         </Link>
 
         {/* Desktop Links with Submenus */}

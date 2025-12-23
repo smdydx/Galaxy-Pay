@@ -6,7 +6,6 @@ export function GalaxyBackground() {
     <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-900/30 via-background to-background" />
 
-      {/* Black Hole Effect */}
       <BlackHole />
 
       {/* Stars */}
@@ -21,8 +20,7 @@ export function GalaxyBackground() {
 function BlackHole() {
   return (
     <div className="absolute inset-0">
-      {/* Central black hole core */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full bg-black shadow-[0_0_80px_rgba(0,0,0,0.8),inset_0_0_40px_rgba(139,0,139,0.3)]" />
+      {/* Central black hole core REMOVED */}
 
       {/* Black hole glow rings */}
       <motion.div
@@ -98,6 +96,7 @@ function AccretionDisk() {
     </div>
   );
 }
+
 
 function Stars() {
   const stars = Array.from({ length: 30 }).map((_, i) => ({
