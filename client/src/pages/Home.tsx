@@ -335,12 +335,12 @@ export default function Home() {
           </div>
 
           <FeaturesCarousel features={[
-            { icon: CreditCard, title: "150+ payment options", desc: "Credit cards, debit cards, UPI, wallets, EMI & BNPL." },
-            { icon: Zap, title: "Best success rate", desc: "Higher success rates for better customer experience." },
-            { icon: Code, title: "Easy integration", desc: "Developer friendly APIs with detailed documentation." },
-            { icon: Smartphone, title: "iFrame checkout", desc: "Embed checkout page on your website or app." },
-            { icon: BarChart3, title: "Unified dashboard", desc: "Real-time data and detailed payment insights." },
-            { icon: CheckCircle, title: "24/7 support", desc: "Dedicated technical support for integrations." }
+            { icon: CreditCard, title: "150+ payment options", desc: "Credit cards, debit cards, UPI, wallets, EMI & BNPL.", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=2940&auto=format&fit=crop" },
+            { icon: Zap, title: "Best success rate", desc: "Higher success rates for better customer experience.", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2940&auto=format&fit=crop" },
+            { icon: Code, title: "Easy integration", desc: "Developer friendly APIs with detailed documentation.", image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2940&auto=format&fit=crop" },
+            { icon: Smartphone, title: "iFrame checkout", desc: "Embed checkout page on your website or app.", image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2940&auto=format&fit=crop" },
+            { icon: BarChart3, title: "Unified dashboard", desc: "Real-time data and detailed payment insights.", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop" },
+            { icon: CheckCircle, title: "24/7 support", desc: "Dedicated technical support for integrations.", image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2938&auto=format&fit=crop" }
           ]} />
         </div>
       </section>
