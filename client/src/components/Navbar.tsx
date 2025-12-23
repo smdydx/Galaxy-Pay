@@ -81,7 +81,7 @@ export function Navbar() {
       <div className="container mx-auto px-6 h-full flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <img src="/logo.png" alt="BiduaPay Logo" className="h-50 w-auto" />
+          <img src="/logo.png" alt="BiduaPay Logo" className="h-25 md:h-50 w-auto" />
         </Link>
 
         {/* Desktop Links with Submenus */}

@@ -3,8 +3,8 @@ import { Footer } from "@/components/Footer";
 import { GalaxyBackground } from "@/components/GalaxyBackground";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 import Autoplay from "embla-carousel-autoplay";
 import {
   ArrowRight,
@@ -57,6 +57,55 @@ const brands = [
   { name: "IRCTC", logo: "/brands/irctc.png" },
   { name: "Tata Play", logo: "/brands/tataplay.png" },
 ];
+
+const Slider = () => {
+  const images = [
+    "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?q=80&w=2574&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=2832&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1965&auto=format&fit=crop"
+  ];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 rounded-2xl aspect-video flex items-center justify-center overflow-hidden relative">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentIndex}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.3 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1 }}
+          className="absolute inset-0"
+        >
+          <img src={images[currentIndex]} alt="" className="w-full h-full object-cover" />
+        </motion.div>
+      </AnimatePresence>
+
+      <div className="text-center relative z-10">
+        <Smartphone className="w-16 h-16 text-purple-400 mx-auto mb-4" />
+        <p className="text-white font-medium">iFrame Checkout Preview</p>
+      </div>
+
+      <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-20">
+        {images.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrentIndex(i)}
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${i === currentIndex ? "bg-white w-6" : "bg-white/40 hover:bg-white/60"
+              }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default function Home() {
   const [selectedPayment, setSelectedPayment] = useState("cards");
@@ -300,15 +349,7 @@ export default function Home() {
             </Button>
           </div>
           <div className="lg:w-1/2 relative group">
-            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-8 aspect-video flex items-center justify-center overflow-hidden relative">
-              <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-700">
-                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2944&auto=format&fit=crop" alt="" className="w-full h-full object-cover" />
-              </div>
-              <div className="text-center relative z-10">
-                <Smartphone className="w-16 h-16 text-purple-400 mx-auto mb-4" />
-                <p className="text-white font-medium">iFrame Checkout Preview</p>
-              </div>
-            </div>
+            <Slider />
           </div>
         </div>
       </section>
@@ -443,15 +484,23 @@ easebuzz.initiatePayment({amount: 1000});`}</pre></div>
           <h2 className="text-3xl md:text-5xl font-display font-bold text-center mb-16">What Customers Say</h2>
           <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid lg:grid-cols-3 gap-8">
             {[
-              { quote: "4x improvement in success rates. Auto reconciliation resolved our issues.", author: "Tanya Saigal", company: "M2M Ferries", emoji: "🚢" },
-              { quote: "Easy to use from business and developer perspectives. Great partnership.", author: "Abhishek Kumar", company: "docOPD", emoji: "🏥" },
-              { quote: "Smooth onboarding. Slices and FeesBuzz help us collect payments effortlessly.", author: "Anupam Jeevan", company: "Dexpert Solutions", emoji: "💼" }
+              { quote: "4x improvement in success rates. Auto reconciliation resolved our issues.", author: "Tanya Saigal", company: "M2M Ferries", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop" },
+              { quote: "Easy to use from business and developer perspectives. Great partnership.", author: "Abhishek Kumar", company: "docOPD", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop" },
+              { quote: "Smooth onboarding. Slices and FeesBuzz help us collect payments effortlessly.", author: "Anupam Jeevan", company: "Dexpert Solutions", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop" }
             ].map((testimonial, i) => (
               <motion.div key={i} variants={itemVariants}>
                 <Card className="bg-white/5 border-white/10 h-full hover:bg-white/10 transition-colors">
                   <CardContent className="p-8">
                     <p className="text-gray-300 italic mb-6 leading-relaxed">"{testimonial.quote}"</p>
-                    <div className="flex items-center gap-3"><div className="text-3xl">{testimonial.emoji}</div><div><p className="font-bold text-white text-sm">{testimonial.author}</p><p className="text-purple-400 text-xs font-semibold">{testimonial.company}</p></div></div>
+                    <div className="flex items-center gap-4">
+                      <div className="h-12 w-12 rounded-full overflow-hidden border border-white/20">
+                        <img src={testimonial.image} alt={testimonial.author} className="h-full w-full object-cover" />
+                      </div>
+                      <div>
+                        <p className="font-bold text-white text-sm">{testimonial.author}</p>
+                        <p className="text-purple-400 text-xs font-semibold">{testimonial.company}</p>
+                      </div>
+                    </div>
                   </CardContent>
                 </Card>
               </motion.div>

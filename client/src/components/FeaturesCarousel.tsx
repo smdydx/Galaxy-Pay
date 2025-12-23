@@ -17,7 +17,7 @@ export function FeaturesCarousel({ features }: FeaturesCarouselProps) {
     const [activeindex, setActiveIndex] = useState(0);
 
     return (
-        <div className="flex flex-col lg:flex-row gap-4 h-[600px] lg:h-[450px] w-full max-w-6xl mx-auto">
+        <div className="flex flex-col lg:flex-row gap-4 h-[850px] lg:h-[450px] w-full max-w-6xl mx-auto">
             {features.map((feature, index) => {
                 const isActive = activeindex === index;
 
@@ -55,12 +55,17 @@ export function FeaturesCarousel({ features }: FeaturesCarouselProps) {
                             )}
                         </AnimatePresence>
 
-                        <div className="relative z-10 flex h-full flex-col justify-between p-6 lg:p-8">
+                        <div className={cn(
+                            "relative z-10 flex h-full transition-all duration-300",
+                            isActive
+                                ? "flex-col justify-between p-4 lg:p-8"
+                                : "flex-row items-center gap-4 p-4 lg:flex-col lg:justify-between lg:p-4"
+                        )}>
                             {/* Icon */}
                             <motion.div
                                 layout="position"
                                 className={cn(
-                                    "flex items-center justify-center rounded-xl border border-white/10 transition-colors duration-300",
+                                    "flex items-center justify-center rounded-xl border border-white/10 transition-colors duration-300 flex-shrink-0",
                                     isActive
                                         ? "h-14 w-14 bg-gradient-to-br from-purple-600 to-blue-600 text-white"
                                         : "h-12 w-12 bg-white/5 text-gray-400"
@@ -70,12 +75,12 @@ export function FeaturesCarousel({ features }: FeaturesCarouselProps) {
                             </motion.div>
 
                             {/* Content */}
-                            <div className="space-y-2">
+                            <div className={cn("space-y-2", !isActive && "lg:text-center w-full")}>
                                 <motion.h3
                                     layout="position"
                                     className={cn(
                                         "font-display font-bold text-white transition-all duration-300",
-                                        isActive ? "text-2xl lg:text-3xl" : "text-lg"
+                                        isActive ? "text-2xl lg:text-3xl" : "text-sm whitespace-nowrap lg:whitespace-normal lg:text-sm"
                                     )}
                                 >
                                     {feature.title}
