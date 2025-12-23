@@ -49,15 +49,28 @@ export default function About() {
                         ))}
                     </div>
 
-                    <div className="max-w-4xl mx-auto bg-gradient-to-br from-white/10 to-transparent border border-white/10 p-12 rounded-3xl backdrop-blur-xl mb-32">
-                        <h2 className="text-3xl font-display font-bold text-white mb-6">Our Mission</h2>
-                        <p className="text-gray-300 text-lg leading-relaxed mb-8">
-                            To provide Indian merchants with a world-class payment infrastructure that eliminates technical barriers and allows them to focus purely on growth. We believe that every transaction is an opportunity for a business to build trust with its customers.
-                        </p>
-                        <div className="flex gap-12">
-                            <div><div className="text-4xl font-bold text-purple-400 mb-1">10M+</div><div className="text-gray-500 text-sm font-medium uppercase tracking-widest">Transactions</div></div>
-                            <div><div className="text-4xl font-bold text-blue-400 mb-1">50K+</div><div className="text-gray-500 text-sm font-medium uppercase tracking-widest">Merchants</div></div>
-                            <div><div className="text-4xl font-bold text-pink-400 mb-1">99.9%</div><div className="text-gray-500 text-sm font-medium uppercase tracking-widest">Uptime</div></div>
+                    <div className="grid md:grid-cols-2 gap-12 items-center mb-32">
+                        <div className="bg-gradient-to-br from-white/10 to-transparent border border-white/10 p-12 rounded-3xl backdrop-blur-xl h-full flex flex-col justify-center">
+                            <h2 className="text-3xl font-display font-bold text-white mb-6">Our Mission</h2>
+                            <p className="text-gray-300 text-lg leading-relaxed mb-8">
+                                To provide Indian merchants with a world-class payment infrastructure that eliminates technical barriers and allows them to focus purely on growth. We believe that every transaction is an opportunity for a business to build trust with its customers.
+                            </p>
+                            <div className="flex gap-8 flex-wrap">
+                                <div><div className="text-4xl font-bold text-purple-400 mb-1">10M+</div><div className="text-gray-500 text-sm font-medium uppercase tracking-widest">Transactions</div></div>
+                                <div><div className="text-4xl font-bold text-blue-400 mb-1">50K+</div><div className="text-gray-500 text-sm font-medium uppercase tracking-widest">Merchants</div></div>
+                                <div><div className="text-4xl font-bold text-pink-400 mb-1">99.9%</div><div className="text-gray-500 text-sm font-medium uppercase tracking-widest">Uptime</div></div>
+                            </div>
+                        </div>
+                        <div className="relative group h-full">
+                            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-3xl blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
+                            <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl h-full min-h-[400px]">
+                                <img
+                                    src="/assets/gateway_hero.png"
+                                    alt="Our Mission"
+                                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                            </div>
                         </div>
                     </div>
                 </div>

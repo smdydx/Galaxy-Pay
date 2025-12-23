@@ -6,9 +6,10 @@ import { motion } from "framer-motion";
 interface PageTemplateProps {
     title: string;
     subtitle: string;
+    children?: React.ReactNode;
 }
 
-export function PageTemplate({ title, subtitle }: PageTemplateProps) {
+export function PageTemplate({ title, subtitle, children }: PageTemplateProps) {
     return (
         <div className="min-h-screen relative overflow-hidden text-foreground">
             <GalaxyBackground />
@@ -29,9 +30,15 @@ export function PageTemplate({ title, subtitle }: PageTemplateProps) {
                         </p>
                     </div>
 
-                    <div className="min-h-[400px] flex items-center justify-center border border-white/10 rounded-3xl bg-white/5 backdrop-blur-sm">
-                        <p className="text-gray-500 italic">Content for {title} coming soon...</p>
-                    </div>
+                    {children ? (
+                        <div className="space-y-20">
+                            {children}
+                        </div>
+                    ) : (
+                        <div className="min-h-[400px] flex items-center justify-center border border-white/10 rounded-3xl bg-white/5 backdrop-blur-sm">
+                            <p className="text-gray-500 italic">Content for {title} coming soon...</p>
+                        </div>
+                    )}
                 </div>
             </section>
 

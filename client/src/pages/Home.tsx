@@ -26,6 +26,7 @@ import {
   CarouselPrevious,
   CarouselNext
 } from "@/components/ui/carousel";
+import { FeaturesCarousel } from "@/components/FeaturesCarousel";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -278,36 +279,18 @@ export default function Home() {
             <p className="text-gray-400 text-lg">Secure and reliable payment processing with industry-best features.</p>
           </div>
 
-          <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { icon: CreditCard, title: "150+ payment options", desc: "Credit cards, debit cards, UPI, wallets, EMI & BNPL." },
-              { icon: Zap, title: "Best success rate", desc: "Higher success rates for better customer experience." },
-              { icon: Code, title: "Easy integration", desc: "Developer friendly APIs with detailed documentation." },
-              { icon: Smartphone, title: "iFrame checkout", desc: "Embed checkout page on your website or app." },
-              { icon: BarChart3, title: "Unified dashboard", desc: "Real-time data and detailed payment insights." },
-              { icon: CheckCircle, title: "24/7 support", desc: "Dedicated technical support for integrations." }
-            ].map((feature, idx) => (
-              <motion.div key={idx} variants={itemVariants} whileHover={{ y: -5 }} className="group">
-                <Card className="bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all h-full overflow-hidden relative">
-                  <div className="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none">
-                    <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=2832&auto=format&fit=crop" alt="" className="w-full h-full object-cover" />
-                  </div>
-                  <CardContent className="p-8 relative z-10">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-600/20 to-blue-600/20 border border-white/10 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform">
-                      <feature.icon size={24} />
-                    </div>
-                    <h3 className="text-lg font-bold text-white mb-3">{feature.title}</h3>
-                    <p className="text-gray-400 text-sm leading-relaxed">{feature.desc}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
+          <FeaturesCarousel features={[
+            { icon: CreditCard, title: "150+ payment options", desc: "Credit cards, debit cards, UPI, wallets, EMI & BNPL." },
+            { icon: Zap, title: "Best success rate", desc: "Higher success rates for better customer experience." },
+            { icon: Code, title: "Easy integration", desc: "Developer friendly APIs with detailed documentation." },
+            { icon: Smartphone, title: "iFrame checkout", desc: "Embed checkout page on your website or app." },
+            { icon: BarChart3, title: "Unified dashboard", desc: "Real-time data and detailed payment insights." },
+            { icon: CheckCircle, title: "24/7 support", desc: "Dedicated technical support for integrations." }
+          ]} />
         </div>
       </section>
-
       {/* SECTION 4: Seamless Checkout */}
-      <section className="py-24 px-6 relative" >
+      <section className="py-24 px-6 relative">
         <div className="container mx-auto flex flex-col lg:flex-row items-center gap-12">
           <div className="lg:w-1/2 space-y-6">
             <h2 className="text-3xl md:text-5xl font-display font-bold">Seamless checkouts with BIDUAPAY</h2>
@@ -331,7 +314,7 @@ export default function Home() {
       </section>
 
       {/* SECTION 5: Payment Methods */}
-      <section className="py-24 px-6 relative z-10" >
+      <section className="py-24 px-6 relative z-10">
         <div className="container mx-auto">
           <h2 className="text-3xl md:text-5xl font-display font-bold text-center mb-16">150+ Payment Methods</h2>
 

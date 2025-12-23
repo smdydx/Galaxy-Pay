@@ -10,23 +10,34 @@ const navItems = [
     submenu: [
       { label: "Payment Gateway", href: "/products/gateway" },
       { label: "Payment Links", href: "/products/links" },
+      { label: "Payment Buttons", href: "/products/buttons" },
       { label: "Wire", href: "/products/wire" },
       { label: "Smart Collect", href: "/products/collect" },
       { label: "FeesBuzz", href: "/products/feesbuzz" },
+      { label: "InstaCollect", href: "/products/insta" },
+      { label: "Payouts", href: "/products/payouts" },
+      { label: "International Payments", href: "/products/international" },
+      { label: "Subscriptions", href: "/products/subscriptions" },
     ]
   },
   {
-    label: "Pricing",
-    href: "/pricing",
-    submenu: []
+    label: "Use Cases",
+    href: "/use-cases",
+    submenu: [
+      { label: "E-commerce", href: "/industries/ecommerce" },
+      { label: "Education", href: "/industries/education" },
+      { label: "Financial Services", href: "/industries/financial" },
+      { label: "SaaS", href: "/industries/saas" },
+    ]
   },
   {
     label: "Developers",
     href: "/developers",
     submenu: [
-      { label: "API Docs", href: "/developers/docs" },
-      { label: "SDK", href: "/developers/sdk" },
+      { label: "API Reference", href: "/developers/docs" },
+      { label: "SDKs", href: "/developers/sdk" },
       { label: "Plugins", href: "/developers/plugins" },
+      { label: "Integration Guide", href: "/developers/guide" },
     ]
   },
   {
@@ -34,10 +45,18 @@ const navItems = [
     href: "/about",
     submenu: [
       { label: "About Us", href: "/about" },
-      { label: "Blog", href: "/blog" },
       { label: "Careers", href: "/careers" },
-      { label: "Contact", href: "/contact" },
+      { label: "Partners", href: "/partners" },
+      { label: "Contact Us", href: "/contact" },
+      { label: "Blog", href: "/blog" },
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms of Use", href: "/terms" },
     ]
+  },
+  {
+    label: "Pricing",
+    href: "/pricing",
+    submenu: []
   },
 ];
 
