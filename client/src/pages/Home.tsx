@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer";
 import { GalaxyBackground } from "@/components/GalaxyBackground";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import Autoplay from "embla-carousel-autoplay";
@@ -77,18 +77,15 @@ const Slider = () => {
 
   return (
     <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 rounded-2xl w-[calc(100%+3rem)] -ml-6 lg:w-full lg:ml-0 h-[350px] lg:h-auto lg:aspect-video flex items-center justify-center overflow-hidden relative">
-      <AnimatePresence>
-        <motion.div
-          key={currentIndex}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.3 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1 }}
-          className="absolute inset-0"
+      {/* Images with CSS fade transitions */}
+      {sliderImages.map((src, i) => (
+        <div
+          key={i}
+          className={`absolute inset-0 transition-opacity duration-1000 ${i === currentIndex ? "opacity-30" : "opacity-0"}`}
         >
-          <img src={sliderImages[currentIndex]} alt="" className="w-full h-full object-cover" />
-        </motion.div>
-      </AnimatePresence>
+          <img src={src} alt="" className="w-full h-full object-cover" />
+        </div>
+      ))}
 
       <div className="text-center relative z-10 pb-8">
         <Smartphone className="w-12 h-12 lg:w-16 lg:h-16 text-purple-400 mx-auto mb-4" />
