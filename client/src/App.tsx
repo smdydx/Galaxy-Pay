@@ -78,11 +78,14 @@ function Router() {
   );
 }
 
+import { CookieConsent } from "@/components/CookieConsent";
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
+        <CookieConsent />
         <Router />
       </TooltipProvider>
     </QueryClientProvider>

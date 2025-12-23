@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import { Link } from "wouter";
 import Autoplay from "embla-carousel-autoplay";
 import {
   ArrowRight,
@@ -135,12 +136,16 @@ export default function Home() {
               </p>
 
               <div className="flex flex-wrap gap-4">
-                <Button size="lg" className="h-14 px-8 text-lg rounded-full bg-white text-black hover:bg-gray-200 transition-all font-semibold shadow-[0_0_20px_rgba(255,255,255,0.2)]">
-                  Sign up now <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-                <Button size="lg" variant="outline" className="h-14 px-8 text-lg rounded-full border-white/20 text-white hover:bg-white/5 backdrop-blur-sm">
-                  See how it works
-                </Button>
+                <Link href="/auth">
+                  <Button size="lg" className="h-14 px-8 text-lg rounded-full bg-white text-black hover:bg-gray-200 transition-all font-semibold shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+                    Sign up now <ArrowRight className="ml-2 w-5 h-5" />
+                  </Button>
+                </Link>
+                <Link href="/developers/guide">
+                  <Button size="lg" variant="outline" className="h-14 px-8 text-lg rounded-full border-white/20 text-white hover:bg-white/5 backdrop-blur-sm">
+                    See how it works
+                  </Button>
+                </Link>
               </div>
             </motion.div>
 
